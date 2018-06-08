@@ -4,23 +4,23 @@
 using namespace std;
 
 int prime[5150]={2,0};
-void findPrime(){              //§ä50000¤ºªº½è¼Æ 
+void findPrime(){              //æ‰¾50000å…§çš„è³ªæ•¸ 
 	char judge[50000]={0};
 	int m = 1,pc=0;
+	/*å»ºsqrt(2^31)ä»¥å…§è³ªæ•¸è¡¨ï¼Œä½¿ç”¨åˆªå»æ³•åˆªåˆ°215çš„å€æ•¸å³å¯*/
 	for (int a = 3; a<=215; a+=2){
-                        		 if (judge[a]==0){
-        		   	                              prime[m++]= a;
-        		   	                              cout<<prime[m-1]<<",";
-        		   	                              system("pause");
-                            			          for (int b=a; b*a<=50000; b+=2)
-                                                  judge[b*a]=1;
-                                		             }
-	                              }
+				 if (judge[a]==0){
+					 prime[m++]= a;
+					 cout<<prime[m-1]<<",";
+					 system("pause");
+					 for (int b=a; b*a<=50000; b+=2)judge[b*a]=1;
+			         }
+	}
     for(int i=215; i<50000; i+=2){
                                   if(judge[i]==0){prime[m++]=i;cout<<prime[m-1]<<",";}
                                   }
 }
-bool is_prime(int num){         // ±N§ä¨ìªº½è¼Æ»P¿é¤J°µ¤ñ¸û 
+bool is_prime(int num){         // å°‡æ‰¾åˆ°çš„è³ªæ•¸èˆ‡è¼¸å…¥åšæ¯”è¼ƒ 
 	int num_sqrt =(int)sqrt(num);
 	for(int i=0; prime[i]<=num_sqrt;i++){
 		if (num%prime[i]==0 ){
@@ -34,9 +34,9 @@ int main(){
 	int a;
 	while (cin >> a ){
 		if(is_prime(a)){
-		cout << "½è¼Æ" << endl;
+		cout << "è³ªæ•¸" << endl;
 		}else {
-			cout << "«D½è¼Æ" << endl; 
+			cout << "éè³ªæ•¸" << endl; 
 		}
 	}
 	return 0;
